@@ -23,6 +23,8 @@ public class DragAndDrog : MonoBehaviour,
     private Vector3 mOriginalPanelLocalPosition;
     private Vector2 mOriginalPosition;
     
+    
+    
     void Start()
     {
         mOriginalPosition = UIDragElement.localPosition;
@@ -64,10 +66,10 @@ public class DragAndDrog : MonoBehaviour,
         if (Physics.Raycast(ray, out hit, 1000.0f))
         {
             Vector3 worldPoint = hit.point;
-            CreateObject(worldPoint);
+            CreateObject(hit.transform, worldPoint);
         }
     }
-    void CreateObject(Vector3 position)
+    void CreateObject(Transform parent, Vector3 position)
     {
     if(PrefabToInstantiate == null)
         {
@@ -76,8 +78,8 @@ public class DragAndDrog : MonoBehaviour,
         }
 
     GameObject obj = Instantiate(PrefabToInstantiate, position, Quaternion.identity);
-    GameObject spawnedObject = GetComponent<SpawnDressColour>().spawnedObject;
-        obj.transform.SetParent(spawnedObject.transform);
+        
+        obj.transform.SetParent(parent, true);
     }
 
         IEnumerator Coroutine_MoveUIElement(

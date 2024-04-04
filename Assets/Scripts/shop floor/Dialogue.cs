@@ -12,6 +12,6 @@ public class Dialogue
     public string[] sentences;
 
     public string order;
-    public GameObject ribbon;
-    public bool black;
+    public string black = ("red dress");
+    public string ribbon2 = ("ribbon");
 }

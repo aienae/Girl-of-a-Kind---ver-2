@@ -17,6 +17,8 @@ public class SpawnDressColour : MonoBehaviour
     public Rotate rotator;
 
     public GameObject spawnedObject;
+    public OrderManager orderManager;
+
     public void ButtonPressed()
     {
          
@@ -39,6 +41,7 @@ public class SpawnDressColour : MonoBehaviour
 
         spawnedObject = Instantiate(dressPrefab, transform.position, Quaternion.identity);
         rotator.objectToRotate = spawnedObject;
+        orderManager.SpawnDressColour = spawnedObject.name;
     }
 
     void SpawnYellow()
