@@ -798,6 +798,7 @@ MonoBehaviour:
   PrefabToInstantiate: {fileID: 5555794357473998798, guid: 5eab4cdaec0989048b796ba5d14b336f, type: 3}
   UIDragElement: {fileID: 281344167}
   Canvas: {fileID: 774367081}
+  orderManager: {fileID: 0}
 --- !u!1 &294151694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,6 +1187,7 @@ MonoBehaviour:
   ButtonYellow: {fileID: 757645495}
   rotator: {fileID: 142717612}
   spawnedObject: {fileID: 0}
+  orderManager: {fileID: 2108491457}
 --- !u!1 &523714677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,6 +2228,7 @@ MonoBehaviour:
   PrefabToInstantiate: {fileID: 5046968924512285058, guid: 0195de8cc4ec26f439d754c14decf14e, type: 3}
   UIDragElement: {fileID: 1231043539}
   Canvas: {fileID: 774367081}
+  orderManager: {fileID: 2108491457}
 --- !u!1 &1344702833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2467,6 +2470,7 @@ MonoBehaviour:
   PrefabToInstantiate: {fileID: 3746948459537118807, guid: db282dbe3a5b91241afe6ee01ff4c0d7, type: 3}
   UIDragElement: {fileID: 1390513925}
   Canvas: {fileID: 774367081}
+  orderManager: {fileID: 0}
 --- !u!1 &1465443814
 GameObject:
   m_ObjectHideFlags: 0
@@ -3184,6 +3188,7 @@ MonoBehaviour:
   PrefabToInstantiate: {fileID: 5046968924512285058, guid: 493a386164bee624987e5f565607b1b6, type: 3}
   UIDragElement: {fileID: 2040960360}
   Canvas: {fileID: 774367081}
+  orderManager: {fileID: 0}
 --- !u!1 &2108491452
 GameObject:
   m_ObjectHideFlags: 0
@@ -3336,10 +3341,10 @@ MonoBehaviour:
     order: 
     black: red dress
     ribbon2: ribbon
-  SpawnDressColour: {fileID: 347185265}
-  DragAndDrop: {fileID: 1231043543}
   black: 
   ribbon2: 
+  SpawnDressColour: 
+  DragAndDrop: 
 --- !u!1 &2123029061
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,8 @@ public class DragAndDrog : MonoBehaviour,
     [SerializeField]
     RectTransform Canvas;
 
+    public OrderManager orderManager;
+
     private Vector2 mOriginalLocalPointerPosition;
     private Vector3 mOriginalPanelLocalPosition;
     private Vector2 mOriginalPosition;
@@ -38,7 +40,7 @@ public class DragAndDrog : MonoBehaviour,
             data.position, 
             data.pressEventCamera,
         out mOriginalLocalPointerPosition);
-            
+        orderManager.DragAndDrop = UIDragElement.name;
     }
 
     public void OnDrag(PointerEventData data)
