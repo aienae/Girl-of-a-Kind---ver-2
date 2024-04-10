@@ -6572,7 +6572,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bdc00c69523804db9d77943337221a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paidCanvasElement: {fileID: 0}
+  audioSource: {fileID: 0}
+  cashSound: {fileID: 0}
 --- !u!1 &1464768497
 GameObject:
   m_ObjectHideFlags: 0
