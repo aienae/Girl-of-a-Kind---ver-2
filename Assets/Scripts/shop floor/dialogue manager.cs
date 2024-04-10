@@ -12,6 +12,8 @@ public class dialoguemanager : MonoBehaviour
     public Canvas canvasButton;
     public TMP_Text orderText;
 
+    
+
     private Queue<string> sentences;
 
     // Start is called before the first frame update

@@ -18,6 +18,8 @@ public class OrderManager : MonoBehaviour
     public GameObject outcomeCnavas;
     public GameObject wellDoneImage;
     public GameObject oopsImage;
+
+
    
 
     void Start()

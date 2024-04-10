@@ -15,26 +15,56 @@ public class shop_UI : MonoBehaviour
     }
 
     public TMP_Text displayBalance;
+    public TMP_Text displayBalanceHUD;
     public int currentBalance = 500;
 
     public GameObject itemButton1;
     public GameObject itemButton2;
     public TMP_Text[] inventoryTexts;
     public Shopitem[] items;
+    public GameObject cashPic;
+    public TMP_Text cashText;
 
-    
+
+
     void Start()
     {
-       UpdateBalanceDisplay();
-       UpdateInventoryDisplay();
-       
+        UpdateBalanceDisplay();
+        UpdateInventoryDisplay();
+
+        cashPic.SetActive(false);
+
+        if (PlayerPrefs.GetInt("ActivateCanvas") == 1)
+        {
+            cashPic.SetActive(true);
+            PlayerPrefs.SetInt("ActivateCanvas", 0);
+        }
+
+        if (PlayerPrefs.GetInt("PaidMax") == 1)
+        {
+            cashText.text = ("+$450");
+            currentBalance = currentBalance + 450;
+            displayBalance.text = "Balance: $" + currentBalance.ToString();
+            displayBalanceHUD.text = "$" + currentBalance.ToString();
+            PlayerPrefs.SetInt("ActivateCanvas", 0);
+        }
+
+        else
+        {
+            cashText.text = ("+$200");
+            currentBalance = currentBalance + 200;
+            displayBalance.text = "Balance: $" + currentBalance.ToString();
+            displayBalanceHUD.text = "$" + currentBalance.ToString();
+            PlayerPrefs.SetInt("ActivateCanvas", 0);
+        }
+
 
     }
 
 
     public void BuyItemClicked(int itemIndex)
     {
-        
+
         if (currentBalance >= items[itemIndex].itemCost)
         {
             currentBalance -= items[itemIndex].itemCost;
@@ -51,13 +81,18 @@ public class shop_UI : MonoBehaviour
     public void UpdateBalanceDisplay()
     {
         displayBalance.text = "Balance: $" + currentBalance.ToString();
+        displayBalanceHUD.text = "$" + currentBalance.ToString();
     }
 
     public void UpdateInventoryDisplay()
     {
-       for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < items.Length; i++)
         {
             inventoryTexts[i].text = items[i].inventoryCount.ToString();
         }
     }
 }
+
+    
+
+    

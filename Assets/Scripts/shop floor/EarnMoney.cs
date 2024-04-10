@@ -8,6 +8,8 @@ public class EarnMoney : MonoBehaviour
 {
     public GameObject cashPic;
     public TMP_Text cashText;
+    public TMP_Text displayBalance;
+    public TMP_Text displayBalanceHUD;
 
     void Start()
     {
@@ -22,6 +24,7 @@ public class EarnMoney : MonoBehaviour
         if (PlayerPrefs.GetInt("PaidMax") == 1)
         {
             cashText.text = ("+$450");
+
             PlayerPrefs.SetInt("ActivateCanvas", 0);
         }
 
