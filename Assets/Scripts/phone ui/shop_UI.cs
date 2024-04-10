@@ -27,6 +27,8 @@ public class shop_UI : MonoBehaviour
     {
        UpdateBalanceDisplay();
        UpdateInventoryDisplay();
+       
+
     }
 
 
