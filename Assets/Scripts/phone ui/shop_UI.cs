@@ -6,22 +6,14 @@ using UnityEngine.UI;
 
 public class shop_UI : MonoBehaviour
 {
-    [System.Serializable]
-    public class Shopitem
-    {
-        public string itemName;
-        public int itemCost;
-        public int inventoryCount;
-    }
+    public Inventory inventory;
 
     public TMP_Text displayBalance;
     public TMP_Text displayBalanceHUD;
-    public int currentBalance = 500;
 
     public GameObject itemButton1;
     public GameObject itemButton2;
     public TMP_Text[] inventoryTexts;
-    public Shopitem[] items;
     public GameObject cashPic;
     public TMP_Text cashText;
 
@@ -43,18 +35,16 @@ public class shop_UI : MonoBehaviour
         if (PlayerPrefs.GetInt("PaidMax") == 1)
         {
             cashText.text = ("+$450");
-            currentBalance = currentBalance + 450;
-            displayBalance.text = "Balance: $" + currentBalance.ToString();
-            displayBalanceHUD.text = "$" + currentBalance.ToString();
+            inventory.AddBalance(450);
+            inventory.DisplayBalance(displayBalance, displayBalanceHUD);
             PlayerPrefs.SetInt("ActivateCanvas", 0);
         }
 
         else
         {
             cashText.text = ("+$200");
-            currentBalance = currentBalance + 200;
-            displayBalance.text = "Balance: $" + currentBalance.ToString();
-            displayBalanceHUD.text = "$" + currentBalance.ToString();
+            inventory.AddBalance(200);
+            inventory.DisplayBalance(displayBalance, displayBalanceHUD);
             PlayerPrefs.SetInt("ActivateCanvas", 0);
         }
 
@@ -65,10 +55,8 @@ public class shop_UI : MonoBehaviour
     public void BuyItemClicked(int itemIndex)
     {
 
-        if (currentBalance >= items[itemIndex].itemCost)
+        if (inventory.BuyItem(itemIndex))
         {
-            currentBalance -= items[itemIndex].itemCost;
-            items[itemIndex].inventoryCount++;
             UpdateBalanceDisplay();
             UpdateInventoryDisplay();
         }
@@ -80,16 +68,12 @@ public class shop_UI : MonoBehaviour
 
     public void UpdateBalanceDisplay()
     {
-        displayBalance.text = "Balance: $" + currentBalance.ToString();
-        displayBalanceHUD.text = "$" + currentBalance.ToString();
+        inventory.DisplayBalance(displayBalance, displayBalanceHUD);
     }
 
     public void UpdateInventoryDisplay()
     {
-        for (int i = 0; i < items.Length; i++)
-        {
-            inventoryTexts[i].text = items[i].inventoryCount.ToString();
-        }
+        inventory.DisplayInventory(inventoryTexts);
     }
 }
 
