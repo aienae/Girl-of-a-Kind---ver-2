@@ -1438,12 +1438,15 @@ MonoBehaviour:
   BlackDress: {fileID: 5221235868153897193, guid: b02c160fe35871c4d85b7c33daf64054, type: 3}
   yellowDress: {fileID: 4744239518989974394, guid: ce008f87e80cfa545b2156747eb8f040, type: 3}
   ButtonPink: {fileID: 1861099333}
+  bowCount: {fileID: 2089547651}
+  gemCount: {fileID: 1920205184}
   ButtonBlue: {fileID: 848927256}
   ButtonBlack: {fileID: 800808979}
   ButtonYellow: {fileID: 757645495}
   rotator: {fileID: 142717612}
   spawnedObject: {fileID: 0}
   orderManager: {fileID: 2108491457}
+  inventory: {fileID: 11400000, guid: a613714611d08e440b95b0985d0a9dc0, type: 2}
 --- !u!1 &523714677
 GameObject:
   m_ObjectHideFlags: 0

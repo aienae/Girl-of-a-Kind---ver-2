@@ -28,7 +28,7 @@ public class dialoguemanager : MonoBehaviour
     public void StartDialogue (Dialogue dialogue)
     {
         canvasDialogue.enabled = true;
-        canvasButton.enabled = false;
+        canvasButton.enabled = true;
         nameText.text = dialogue.name;
         orderText.text = dialogue.order;
 
@@ -57,5 +57,6 @@ public class dialoguemanager : MonoBehaviour
     {
         Debug.Log("end of convo");
         canvasDialogue.enabled = false;
+        canvasButton.enabled = true;
     }
 }

@@ -11,6 +11,8 @@ public class SpawnDressColour : MonoBehaviour
     public GameObject BlackDress;
     public GameObject yellowDress;
     public Button ButtonPink;
+    public TMP_Text bowCount;
+    public TMP_Text gemCount;
     public Button ButtonBlue;
     public Button ButtonBlack;
     public Button ButtonYellow;
@@ -18,12 +20,10 @@ public class SpawnDressColour : MonoBehaviour
 
     public GameObject spawnedObject;
     public OrderManager orderManager;
+    public Inventory inventory;
 
-    public void ButtonPressed()
-    {
-         
-    }
-
+   
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +32,9 @@ public class SpawnDressColour : MonoBehaviour
         ButtonBlue.onClick.AddListener(SpawnBlue);
         ButtonBlack.onClick.AddListener(SpawnBlack);
         ButtonYellow.onClick.AddListener(SpawnYellow);
+
+        bowCount.text = inventory.items[0].inventoryCount.ToString();
+        gemCount.text = inventory.items[1].inventoryCount.ToString();
     }
 
     void SpawnDress(GameObject dressPrefab)

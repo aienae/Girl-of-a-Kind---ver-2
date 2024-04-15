@@ -11,6 +11,7 @@ public class Inventory : ScriptableObject
         public string itemName;
         public int itemCost;
         public int inventoryCount;
+        public string orderText;
     }
     public Shopitem[] items;
     public int currentBalance = 500;
