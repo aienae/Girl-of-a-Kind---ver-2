@@ -22,8 +22,9 @@ public class SpawnDressColour : MonoBehaviour
     public OrderManager orderManager;
     public Inventory inventory;
 
-   
-   
+    public AudioSource alaiaSong;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,8 @@ public class SpawnDressColour : MonoBehaviour
 
         bowCount.text = inventory.items[0].inventoryCount.ToString();
         gemCount.text = inventory.items[1].inventoryCount.ToString();
+
+        alaiaSong.Play();
     }
 
     void SpawnDress(GameObject dressPrefab)

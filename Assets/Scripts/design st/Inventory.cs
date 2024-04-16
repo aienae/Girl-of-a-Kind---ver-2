@@ -15,6 +15,18 @@ public class Inventory : ScriptableObject
     }
     public Shopitem[] items;
     public int currentBalance = 500;
+    public string dress;
+    public string accessory;
+    public Transform currentCustomer;
+    public bool earnedMoney;
+    public bool paidMax;
+
+    public void OnEnable()
+    {
+        currentBalance = 500;
+        earnedMoney = false;
+        paidMax = false;
+    }
 
     public void AddBalance(int amount)
     {

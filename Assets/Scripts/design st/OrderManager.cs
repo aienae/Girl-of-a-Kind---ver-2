@@ -8,45 +8,41 @@ using UnityEngine.UI;
 
 public class OrderManager : MonoBehaviour
 {
-    public Dialogue Dialogue; // reference to the dialogue script
-    public string black;
-    public string ribbon2;
+    public Inventory inventory;
     public string SpawnDressColour;
     public string DragAndDrop;
 
     public TMP_Text finalText;
     public GameObject outcomeCnavas;
-    public GameObject wellDoneImage;
-    public GameObject oopsImage;
+    
 
 
    
 
     void Start()
     {
-        ribbon2 = Dialogue.ribbon2;
-        black = Dialogue.black;
         outcomeCnavas.SetActive(false);
-        oopsImage.SetActive(false);
-        wellDoneImage.SetActive(false);
+        
     }
     
     public void OnButtonClick()
     {
         outcomeCnavas.SetActive(true);
 
-        if (SpawnDressColour == black && DragAndDrop == ribbon2)
+        if (SpawnDressColour == inventory.dress && DragAndDrop == inventory.accessory)
         {
             finalText.text = "perfect! a true fashionista!";
-            wellDoneImage.SetActive(true);
-            PlayerPrefs.SetInt("PaidMax", 1);
+            inventory.AddBalance(450);
+            inventory.earnedMoney = true;
+            inventory.paidMax = true;
             Debug.Log("order complete!");
         }
         else
         {
             finalText.text = "Looks like you missed some stuff, oops!";
-            oopsImage.SetActive(true);
-            PlayerPrefs.SetInt("PaidMax", 0);
+            inventory.AddBalance(200);
+            inventory.earnedMoney = true;
+            inventory.paidMax = false;
             Debug.Log("order wasn't completed correctly");
         }
 

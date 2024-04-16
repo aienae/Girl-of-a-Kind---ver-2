@@ -24,31 +24,18 @@ public class shop_UI : MonoBehaviour
         UpdateBalanceDisplay();
         UpdateInventoryDisplay();
 
-        cashPic.SetActive(false);
+        cashPic.SetActive(inventory.earnedMoney);
 
-        if (PlayerPrefs.GetInt("ActivateCanvas") == 1)
-        {
-            cashPic.SetActive(true);
-            PlayerPrefs.SetInt("ActivateCanvas", 0);
-        }
-
-        if (PlayerPrefs.GetInt("PaidMax") == 1)
+        if (inventory.paidMax)
         {
             cashText.text = ("+$450");
-            inventory.AddBalance(450);
-            inventory.DisplayBalance(displayBalance, displayBalanceHUD);
-            PlayerPrefs.SetInt("ActivateCanvas", 0);
         }
-
         else
         {
             cashText.text = ("+$200");
-            inventory.AddBalance(200);
-            inventory.DisplayBalance(displayBalance, displayBalanceHUD);
-            PlayerPrefs.SetInt("ActivateCanvas", 0);
         }
 
-
+        inventory.DisplayBalance(displayBalance, displayBalanceHUD);
     }
 
 

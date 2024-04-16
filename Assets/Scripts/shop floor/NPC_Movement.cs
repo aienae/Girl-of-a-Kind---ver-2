@@ -9,11 +9,13 @@ public class characterMovement : MonoBehaviour
     private Vector3 targetPosition;
     private Animator animator;
 
+
     void Start()
     {
         // Set the target position (where you want the character to move)
         targetPosition = new Vector3(-0.6f, -1.61f, 2.9f); // Example target position, adjust as needed
         animator = GetComponent<Animator>();
+
     }
 
     void Update()

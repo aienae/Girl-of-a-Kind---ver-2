@@ -16,7 +16,14 @@ MonoBehaviour:
   - itemName: Bow
     itemCost: 100
     inventoryCount: 0
+    orderText: 
   - itemName: Gem
     itemCost: 200
     inventoryCount: 0
-  currentBalance: 500
+    orderText: 
+  currentBalance: 950
+  dress: red dress
+  accessory: ribbon
+  currentCustomer: {fileID: 0}
+  earnedMoney: 1
+  paidMax: 1

@@ -18,9 +18,9 @@ public class levelloader : MonoBehaviour
 
     public void FinishPayClicked(string shop)
     {
-        SceneManager.LoadScene(shop);
         PlayerPrefs.SetInt("ActivateCanvas", 1);
         audioSource.PlayOneShot(cashSound);
+        SceneManager.LoadScene(shop);
     }
         
 }

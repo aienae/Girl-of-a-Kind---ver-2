@@ -6,12 +6,15 @@ using UnityEngine.UI;
 
 public class dialoguemanager : MonoBehaviour
 {
+    public Inventory inventory;
     public TMP_Text nameText;
     public TMP_Text dialogueText;
     public Canvas canvasDialogue;
     public Canvas canvasButton;
     public TMP_Text orderText;
 
+    
+    
     
 
     private Queue<string> sentences;
@@ -21,6 +24,8 @@ public class dialoguemanager : MonoBehaviour
     {
         canvasDialogue.enabled = false;
         sentences = new Queue<string>();
+        
+   
     }
 
     // Update is called once per frame
@@ -31,6 +36,8 @@ public class dialoguemanager : MonoBehaviour
         canvasButton.enabled = true;
         nameText.text = dialogue.name;
         orderText.text = dialogue.order;
+        inventory.dress = dialogue.dress;
+        inventory.accessory = dialogue.accessory;
 
         sentences.Clear();
 
