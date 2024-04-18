@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class Acessibility : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class Acessibility : MonoBehaviour
     public GameObject mainMenu;
     public bool inSettings;
 
+    public CinemachineVirtualCamera[] cameras;
+    public List<GameObject> mainMenuSceneObjects = new List<GameObject>();
+    public List<GameObject> shopSceneObjects = new List<GameObject>();
+    public List<GameObject> designStationSceneObjects = new List<GameObject>();
+
     private void Awake()
     {
         for (int i = 0; i < scenesInGame.Length; i++)
@@ -39,8 +45,76 @@ public class Acessibility : MonoBehaviour
     {
         //everything inside this start function is for setting values
         text = Resources.FindObjectsOfTypeAll<TextMeshProUGUI>();
+        cameras = Resources.FindObjectsOfTypeAll<CinemachineVirtualCamera>();
+        GameObject[] gameObjectsFound = Resources.FindObjectsOfTypeAll<GameObject>();
         TMP_Dropdown[] dropdownObject = Resources.FindObjectsOfTypeAll<TMP_Dropdown>();
         Slider[] slider = Resources.FindObjectsOfTypeAll<Slider>();
+
+        for (int i = 0; i < cameras.Length; i++)
+        {
+            cameras[i].Priority = 10;
+            if (cameras[i].name == "Menu Virtual Camera")
+            {
+                cameras[i].Priority = 11;
+            }
+        }
+
+        for (int i = 0; i < gameObjectsFound.Length; i++)
+        {
+            if (gameObjectsFound[i].name == "ShopObjects")
+            {
+                shopSceneObjects.Add(gameObjectsFound[i]);
+            }
+            if (gameObjectsFound[i].name == "ShopLighting")
+            {
+                shopSceneObjects.Add(gameObjectsFound[i]);
+            }
+            if (gameObjectsFound[i].name == "ShopMenus")
+            {
+                shopSceneObjects.Add(gameObjectsFound[i]);
+            }
+            if (gameObjectsFound[i].name == "ShopNPCStuff")
+            {
+                shopSceneObjects.Add(gameObjectsFound[i]);
+            }
+            if (gameObjectsFound[i].name == "ShopManagers")
+            {
+                shopSceneObjects.Add(gameObjectsFound[i]);
+            }
+            if (gameObjectsFound[i].name == "DSObects")
+            {
+                designStationSceneObjects.Add(gameObjectsFound[i]);
+            }
+            if (gameObjectsFound[i].name == "DSLighting")
+            {
+                designStationSceneObjects.Add(gameObjectsFound[i]);
+            }
+            if (gameObjectsFound[i].name == "DSMenus")
+            {
+                designStationSceneObjects.Add(gameObjectsFound[i]);
+            }
+            if (gameObjectsFound[i].name == "MMMenus")
+            {
+                mainMenuSceneObjects.Add(gameObjectsFound[i]);
+            }
+            if (gameObjectsFound[i].name == "MMLighting")
+            {
+                mainMenuSceneObjects.Add(gameObjectsFound[i]);
+            }
+            if (gameObjectsFound[i].name == "MMAudioAndVideo")
+            {
+                mainMenuSceneObjects.Add(gameObjectsFound[i]);
+            }
+        }
+
+        for (int i = 0; i < shopSceneObjects.Count; i++)
+        {
+            shopSceneObjects[i].SetActive(false);
+        }
+        for (int i = 0; i < designStationSceneObjects.Count; i++)
+        {
+            designStationSceneObjects[i].SetActive(false);
+        }
 
         for (int i = 0; i < dropdownObject.Length; i++)
         {
@@ -112,8 +186,23 @@ public class Acessibility : MonoBehaviour
 
     public void PlayGame()
     {
-        //change name of game scene below to the game scenes name
-        SceneManager.LoadScene("shop");
+        for (int i = 0; i < shopSceneObjects.Count; i++)
+        {
+            shopSceneObjects[i].SetActive(true);
+        }
+        for (int i = 0; i < mainMenuSceneObjects.Count; i++)
+        {
+            mainMenuSceneObjects[i].SetActive(false);
+        }
+
+        for (int i = 0; i < cameras.Length; i++)
+        {
+            cameras[i].Priority = 10;
+            if (cameras[i].name == "Shop Virtual Camera")
+            {
+                cameras[i].Priority = 11;
+            }
+        }
     }
 
 

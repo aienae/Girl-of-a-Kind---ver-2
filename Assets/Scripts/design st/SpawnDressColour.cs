@@ -24,7 +24,6 @@ public class SpawnDressColour : MonoBehaviour
 
     public AudioSource alaiaSong;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +70,6 @@ public class SpawnDressColour : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 }
