@@ -15,6 +15,9 @@ public class CanvasController : MonoBehaviour
     public Button InventoryButton;
     public Button InvenBackButton;
 
+    public AudioSource audioSource;
+    public AudioClip clickSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +28,15 @@ public class CanvasController : MonoBehaviour
 
     public void ShopButtonClicked()
     {
+        audioSource.PlayOneShot(clickSound);
         childMainMenu.SetActive(false);
         childShopMenu.SetActive(true);
         childInvenMenu.SetActive(false);
     }
     public void ShopBackClicked()
     {
+        audioSource.PlayOneShot(clickSound);
+        audioSource.PlayOneShot(clickSound);
         childShopMenu.SetActive(false);
         childMainMenu.SetActive(true);
 
@@ -38,6 +44,7 @@ public class CanvasController : MonoBehaviour
 
     public void InventoryButtonClicked()
     {
+        audioSource.PlayOneShot(clickSound);
         childMainMenu.SetActive(false);
         childInvenMenu.SetActive(true);
         childShopMenu.SetActive(false);
@@ -45,6 +52,7 @@ public class CanvasController : MonoBehaviour
     }
         public void InvenBackClicked()
     {
+        audioSource.PlayOneShot(clickSound);
         childInvenMenu.SetActive(false);
         childMainMenu.SetActive(true);
 

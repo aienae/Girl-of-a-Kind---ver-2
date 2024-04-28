@@ -18,6 +18,9 @@ public class OpenPhone : MonoBehaviour
     private GameObject phoneInstance;
 
     public DestroyPhone DestroyPhone;
+
+    public AudioSource audioSource;
+    public AudioClip clickSound;
     
 
     // Start is called before the first frame update
@@ -45,7 +48,7 @@ public class OpenPhone : MonoBehaviour
     
     public void PhoneToggleOn()
     {
-
+        audioSource.PlayOneShot(clickSound);
         phoneButton.SetActive(false);
         SpawnPhone();
         

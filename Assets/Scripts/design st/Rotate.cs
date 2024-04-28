@@ -7,6 +7,7 @@ public class Rotate : MonoBehaviour
 {
     public Slider slider;
     public GameObject objectToRotate;
+    public GameObject objectToRotate2;
 
 
     // Start is called before the first frame update
@@ -20,5 +21,6 @@ public class Rotate : MonoBehaviour
     {
         float rotationAmount = slider.value * 360f;
         objectToRotate.transform.rotation = Quaternion.Euler(0f, rotationAmount, 0f);
+        objectToRotate2.transform.rotation = Quaternion.Euler(0f, rotationAmount, 0f);
     }
 }

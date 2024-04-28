@@ -8,9 +8,19 @@ using Cinemachine;
 
 public class Acessibility : MonoBehaviour
 {
+    public GameObject playButton;
+    public GameObject settingsButton;
+    public GameObject creditsButton;
+    public GameObject backButton;
     //make sure to add scene names used in the game to this array inside the inspector in unity
     //Example: "MainMenu" "GameScene" etc.
     public string[] scenesInGame;
+
+    public AudioSource audioSource;
+    public AudioClip clickSound;
+    public GameObject credits;
+    
+
 
 
     public TextMeshProUGUI[] text;
@@ -43,6 +53,9 @@ public class Acessibility : MonoBehaviour
 
     void Start()
     {
+
+        credits.SetActive(false);
+        backButton.SetActive(false);
         //everything inside this start function is for setting values
         text = Resources.FindObjectsOfTypeAll<TextMeshProUGUI>();
         cameras = Resources.FindObjectsOfTypeAll<CinemachineVirtualCamera>();
@@ -174,6 +187,7 @@ public class Acessibility : MonoBehaviour
 
     public void SettingsOpenClose()
     {
+        audioSource.PlayOneShot(clickSound);
         Debug.Log("settings");
         inSettings = !inSettings;
     }
@@ -184,8 +198,33 @@ public class Acessibility : MonoBehaviour
         Debug.Break();
     }
 
+    public void Credits()
+    {
+        audioSource.PlayOneShot(clickSound);
+        credits.SetActive(true);
+        playButton.SetActive(false);
+        settingsButton.SetActive(false);
+        creditsButton.SetActive(false);
+        backButton.SetActive(true);
+    }
+
+    public void backToMainMenuButton()
+    {
+        audioSource.PlayOneShot(clickSound);
+        credits.SetActive(false);
+        playButton.SetActive(true);
+        settingsButton.SetActive(true);
+        creditsButton.SetActive(true);
+       backButton.SetActive(false);
+
+    }
+
+   
+
+
     public void PlayGame()
     {
+        audioSource.PlayOneShot(clickSound);
         for (int i = 0; i < shopSceneObjects.Count; i++)
         {
             shopSceneObjects[i].SetActive(true);
