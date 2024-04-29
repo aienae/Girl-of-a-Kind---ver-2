@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using Cinemachine;
+using UnityEngine.Audio;
 
 public class Acessibility : MonoBehaviour
 {
@@ -12,16 +13,12 @@ public class Acessibility : MonoBehaviour
     public GameObject settingsButton;
     public GameObject creditsButton;
     public GameObject backButton;
-    //make sure to add scene names used in the game to this array inside the inspector in unity
-    //Example: "MainMenu" "GameScene" etc.
+
     public string[] scenesInGame;
 
     public AudioSource audioSource;
     public AudioClip clickSound;
     public GameObject credits;
-    
-
-
 
     public TextMeshProUGUI[] text;
     public Slider textSlider;
@@ -42,11 +39,21 @@ public class Acessibility : MonoBehaviour
     public List<GameObject> shopSceneObjects = new List<GameObject>();
     public List<GameObject> designStationSceneObjects = new List<GameObject>();
 
+    private float fieldOfVisionValue;
+    public Slider sliderFOV;
+    public TextMeshProUGUI sliderNumbText;
+
+    public Slider musicSlider;
+    public AudioMixer mainMixer;
+    public Slider soundSlider;
+
+    const string MIXER_MUSIC = "Music Volume";
+    const string MIXER_SOUND = "Sound Volume";
+
     private void Awake()
     {
         for (int i = 0; i < scenesInGame.Length; i++)
         {
-            //uses the array to add scenes additively and helps make the text changing work
             SceneManager.LoadSceneAsync(scenesInGame[i], LoadSceneMode.Additive);
         }
     }
@@ -56,7 +63,6 @@ public class Acessibility : MonoBehaviour
 
         credits.SetActive(false);
         backButton.SetActive(false);
-        //everything inside this start function is for setting values
         text = Resources.FindObjectsOfTypeAll<TextMeshProUGUI>();
         cameras = Resources.FindObjectsOfTypeAll<CinemachineVirtualCamera>();
         GameObject[] gameObjectsFound = Resources.FindObjectsOfTypeAll<GameObject>();
@@ -118,6 +124,10 @@ public class Acessibility : MonoBehaviour
             {
                 mainMenuSceneObjects.Add(gameObjectsFound[i]);
             }
+            if (gameObjectsFound[i].name == "MMObjects")
+            {
+                mainMenuSceneObjects.Add(gameObjectsFound[i]);
+            }
         }
 
         for (int i = 0; i < shopSceneObjects.Count; i++)
@@ -142,12 +152,30 @@ public class Acessibility : MonoBehaviour
             {
                 textSlider = slider[i];
             }
+            if (slider[i].name == "Music Volume Slider")
+            {
+                musicSlider = slider[i];
+            }
+            if (slider[i].name == "Sound Volume Slider")
+            {
+                soundSlider = slider[i];
+            }
+            if (slider[i].name == "FOV Slider")
+            {
+                sliderFOV = slider[i];
+            }
         }
 
         for (int i = 0; i < text.Length; i++)
         {
             defaultTextSize.Add(text[i].fontSize);
         }
+
+        musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        soundSlider.onValueChanged.AddListener(SetSoundVolume);
+
+        fieldOfVisionValue = sliderFOV.value;
+        sliderNumbText.text = "FOV: " + fieldOfVisionValue.ToString();
     }
 
     private void Update()
@@ -164,7 +192,6 @@ public class Acessibility : MonoBehaviour
         }
     }
 
-    //this function needs to be on the text slider
     public void TextSliderChange()
     {
         for (int i = 0; i < text.Length; i++)
@@ -174,7 +201,6 @@ public class Acessibility : MonoBehaviour
         }
     }
 
-    //this function needs to be on the font dropdown
     public void FontStyleDropdown()
     {
         for (int i = 0; i < text.Length; i++)
@@ -219,8 +245,25 @@ public class Acessibility : MonoBehaviour
 
     }
 
-   
+    void SetMusicVolume(float value)
+    {
+        mainMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value) * 20);
+    }    
+    
+    void SetSoundVolume(float value)
+    {
+        mainMixer.SetFloat(MIXER_SOUND, Mathf.Log10(value) * 20);
+    }    
 
+    public void SetFOV()
+    {
+        fieldOfVisionValue = sliderFOV.value;
+        for (int i = 0; i < cameras.Length; i++)
+        {
+            cameras[i].m_Lens.FieldOfView = fieldOfVisionValue;
+        }
+        sliderNumbText.text = "FOV: " + fieldOfVisionValue.ToString();
+    }
 
     public void PlayGame()
     {
