@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2714,7 +2714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38714a0d784075e4181a8021d279daf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabToInstantiate: {fileID: 8646953235154113834, guid: 0247570ef0ec7aa4fbaf5291a8697cd1, type: 3}
+  PrefabToInstantiate: {fileID: 5637197921176271010, guid: 7a741178981663343a0ee1a7d5be4f5e, type: 3}
   UIDragElement: {fileID: 1231043539}
   Canvas: {fileID: 774367081}
   orderManager: {fileID: 2108491457}
@@ -3119,7 +3119,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 17078165015710736, guid: 9d888d8cf0538d7419421974c693bb0b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1355066263}
   m_SourcePrefab: {fileID: 100100000, guid: 9d888d8cf0538d7419421974c693bb0b, type: 3}
 --- !u!1 &1355066261 stripped
 GameObject:
@@ -3131,6 +3134,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 826265588247369386, guid: 9d888d8cf0538d7419421974c693bb0b, type: 3}
   m_PrefabInstance: {fileID: 1355066260}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1355066263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355066261}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 40.55, y: 185.69, z: 33.71}
+  m_Center: {x: 2.96, y: 64.98, z: 0}
 --- !u!1 &1359738697
 GameObject:
   m_ObjectHideFlags: 0
@@ -4693,7 +4717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: e516c5701e67b2f4da99d3e45ee961cc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4723,7 +4747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38714a0d784075e4181a8021d279daf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabToInstantiate: {fileID: 5046968924512285058, guid: 493a386164bee624987e5f565607b1b6, type: 3}
+  PrefabToInstantiate: {fileID: 8646953235154113834, guid: 0247570ef0ec7aa4fbaf5291a8697cd1, type: 3}
   UIDragElement: {fileID: 2040960360}
   Canvas: {fileID: 774367081}
   orderManager: {fileID: 0}
